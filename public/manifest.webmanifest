@@ -1,0 +1,38 @@
+{
+  "name": "LUDIKTIC — Plataforma STEAM Grado 8°",
+  "short_name": "LUDIKTIC",
+  "description": "Plataforma educativa gamificada STEAM con retos de programación Python en tiempo real y flashcards QR para grado octavo.",
+  "theme_color": "#050816",
+  "background_color": "#050816",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/",
+  "lang": "es-CO",
+  "categories": ["education", "games"],
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

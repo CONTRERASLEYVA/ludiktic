@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import CodeMirror from '@uiw/react-codemirror'
 import { python } from '@codemirror/lang-python'
+import { EditorView } from '@codemirror/view'
 import confetti from 'canvas-confetti'
 import { useAuth } from '../features/auth/ProveedorAuth'
 import retosData from '../data/retos.json'
@@ -112,8 +113,8 @@ export default function Reto() {
     setEstadoBit('pensando')
     setSalidaConsola('⚡ Ejecutando tu código con Python...')
 
-    // Si está en celular, cambiar a la pestaña de código para ver la consola
-    if (window.innerWidth < 768) {
+    // Si está en pantalla móvil/tablet (<900px), cambiar a la pestaña de código para ver la consola
+    if (window.innerWidth < 900) {
       setTabMovil('codigo')
     }
 
@@ -147,7 +148,7 @@ export default function Reto() {
     const nuevoIntento = intentosRealizados + 1
     setIntentosRealizados(nuevoIntento)
 
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 900) {
       setTabMovil('codigo')
     }
 
@@ -449,7 +450,7 @@ export default function Reto() {
             <CodeMirror
               value={codigo}
               height="300px"
-              extensions={[python()]}
+              extensions={[python(), EditorView.lineWrapping]}
               theme="dark"
               onChange={(val) => setCodigo(val)}
               basicSetup={{

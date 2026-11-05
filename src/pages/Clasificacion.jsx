@@ -21,7 +21,8 @@ import styles from './Clasificacion.module.css'
 
 export default function Clasificacion() {
   const { perfil } = useAuth()
-  const [cursoFiltro, setCursoFiltro] = useState('todos')
+  // Por defecto filtrar por el curso del estudiante logueado (ej: 8A-2026)
+  const [cursoFiltro, setCursoFiltro] = useState(() => perfil?.curso || '8A-2026')
   const [areaFiltro, setAreaFiltro]   = useState('general')
   const [ranking, setRanking]         = useState([])
   const [cargando, setCargando]       = useState(true)
@@ -157,9 +158,12 @@ export default function Clasificacion() {
           </span>
           <div className={styles.chipsFiltro}>
             {[
-              { id: 'todos', label: 'Todos los cursos' },
               { id: '8A-2026', label: 'Grado 8A' },
-              { id: '8B-2026', label: 'Grado 8B' }
+              { id: '8B-2026', label: 'Grado 8B' },
+              ...(perfil?.curso && !['8A-2026', '8B-2026', 'todos'].includes(perfil.curso)
+                ? [{ id: perfil.curso, label: `Curso ${perfil.curso}` }]
+                : []),
+              { id: 'todos', label: 'Todos los cursos' }
             ].map((curso) => (
               <button
                 key={curso.id}

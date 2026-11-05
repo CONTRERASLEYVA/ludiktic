@@ -1,0 +1,229 @@
+/* Banner flotante de instalación PWA */
+.banner {
+  position: fixed;
+  bottom: calc(var(--alto-navbar-bottom, 60px) + 12px);
+  left: 12px;
+  right: 12px;
+  z-index: 300;
+  animation: deslizarArriba 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (min-width: 768px) {
+  .banner {
+    bottom: 24px;
+    left: auto;
+    right: 24px;
+    width: 380px;
+    max-width: calc(100vw - 48px);
+  }
+}
+
+@keyframes deslizarArriba {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contenido {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(56, 189, 248, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.icono {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.texto strong {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #F8FAFC;
+}
+
+.texto span {
+  font-size: 0.76rem;
+  color: #94A3B8;
+  line-height: 1.3;
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.botonInstalar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.botonInstalar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.6);
+}
+
+.botonInstalar:active {
+  transform: scale(0.96);
+}
+
+.botonCerrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.botonCerrar:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #FCA5A5;
+}
+
+/* Overlay modal guía iOS */
+.overlayIOS {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 400;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  animation: aparecer 0.2s ease-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modalIOS {
+  background: rgba(15, 23, 42, 0.97);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 20px 20px 16px 16px;
+  padding: 28px 24px 24px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modalIOS h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #F8FAFC;
+  margin: 0;
+  text-align: center;
+}
+
+.pasos {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.pasos li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: #CBD5E1;
+  line-height: 1.5;
+}
+
+.pasos li strong {
+  color: #F8FAFC;
+}
+
+.numeroPaso {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB, #7C3AED);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.botonCerrarModal {
+  background: linear-gradient(135deg, #059669 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.15s ease;
+  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.4);
+}
+
+.botonCerrarModal:hover {
+  transform: translateY(-2px);
+}

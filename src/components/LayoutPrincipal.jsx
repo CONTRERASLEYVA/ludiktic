@@ -2,12 +2,14 @@ import { Outlet } from 'react-router-dom'
 import BarraLateral from './BarraLateral'
 import HeaderSuperior from './HeaderSuperior'
 import NavbarInferior from './NavbarInferior'
+import BotonInstalarPWA from './BotonInstalarPWA'
 import styles from './LayoutPrincipal.module.css'
 
 /**
  * Layout principal responsive para las páginas autenticadas:
  * - Computador: Barra lateral izquierda fija + contenido principal
  * - Celular: Header superior fijo + contenido + Barra inferior fija
+ * - PWA: Banner de instalación flotante en todas las páginas
  */
 export default function LayoutPrincipal() {
   return (
@@ -27,6 +29,9 @@ export default function LayoutPrincipal() {
 
       {/* Barra de navegación inferior en celulares */}
       <NavbarInferior />
+
+      {/* Banner de instalación PWA — Aparece automáticamente en Android/iOS si no está instalada */}
+      <BotonInstalarPWA />
     </div>
   )
 }

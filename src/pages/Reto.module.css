@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--espacio-md);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Barra superior */
@@ -11,6 +15,8 @@
   justify-content: space-between;
   padding-bottom: var(--espacio-xs);
   border-bottom: 1px solid var(--color-borde);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .botonVolver {
@@ -64,6 +70,8 @@
   border-radius: var(--radio-md);
   padding: 4px;
   gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
@@ -105,13 +113,17 @@
 /* Dos columnas del Reto */
 .columnasReto {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--espacio-lg);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
   .columnasReto {
-    grid-template-columns: 1fr 1.25fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   }
 }
 
@@ -271,6 +283,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--espacio-sm);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .barraEditor {
@@ -281,6 +297,10 @@
   border: 1px solid var(--color-borde);
   border-radius: var(--radio-md) var(--radio-md) 0 0;
   padding: 6px 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .grupoBotonesZoom {
@@ -329,6 +349,10 @@
   background: #0F172A;
   border-radius: 0 0 var(--radio-md) var(--radio-md);
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Teclado rápido móvil */
@@ -339,6 +363,11 @@
   overflow-x: auto;
   padding: 6px 0;
   scrollbar-width: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tecladoTitulo {
@@ -372,9 +401,20 @@
 /* Acciones principales del editor */
 .accionesEditor {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--espacio-sm);
   margin-top: 4px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .accionesEditor {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }
 
 .botonEjecutar,
@@ -382,14 +422,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--espacio-sm);
-  padding: 10px 16px;
+  gap: var(--espacio-xs);
+  padding: 10px 14px;
   border-radius: var(--radio-md);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transicion-rapida);
   border: none;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.botonEjecutar span,
+.botonEnviar span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .botonEjecutar {
@@ -429,6 +480,10 @@
   display: flex;
   flex-direction: column;
   margin-top: var(--espacio-xs);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .cabeceraConsola {
@@ -438,6 +493,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .iconoTerminal {
@@ -463,10 +522,15 @@
 .cuerpoConsola {
   padding: var(--espacio-md);
   min-height: 120px;
-  max-height: 260px;
+  max-height: 280px;
   overflow-y: auto;
+  overflow-x: auto;
   font-family: var(--fuente-codigo);
   font-size: 0.85rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .placeholderConsola {
@@ -475,6 +539,7 @@
   font-family: var(--fuente-cuerpo);
   line-height: 1.5;
   margin: 0;
+  word-break: break-word;
 }
 
 .mensajeError {
@@ -484,19 +549,25 @@
   border-radius: 0 var(--radio-sm) var(--radio-sm) 0;
   color: #FCA5A5;
   margin-bottom: var(--espacio-xs);
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .mensajeError p {
   margin: 0;
   font-family: var(--fuente-cuerpo);
   font-weight: 500;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .textoSalida {
   color: #F8FAFC;
   white-space: pre-wrap;
   word-break: break-word;
+  overflow-wrap: anywhere;
   margin: 0;
+  max-width: 100%;
 }
 
 /* Casos de Prueba */
@@ -505,6 +576,10 @@
   flex-direction: column;
   gap: 8px;
   margin-top: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .seccionResultadosPruebas h4 {
@@ -518,6 +593,10 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .itemPrueba {
@@ -528,6 +607,10 @@
   border-radius: var(--radio-md);
   font-size: 0.78rem;
   border: 1px solid transparent;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .pruebaAprobada {
@@ -544,6 +627,7 @@
 
 .iconoPrueba {
   margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .detallesPrueba {
@@ -551,26 +635,42 @@
   flex-direction: column;
   gap: 4px;
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .tituloPrueba {
   font-family: var(--fuente-cuerpo);
   font-size: 0.8rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .comparacionPrueba {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   font-size: 0.72rem;
   color: var(--color-texto-suave);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.comparacionPrueba span {
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .comparacionPrueba code {
   background: rgba(0, 0, 0, 0.3);
-  padding: 1px 4px;
+  padding: 2px 6px;
   border-radius: 3px;
   color: #FFFFFF;
+  word-break: break-all;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  display: inline-block;
+  max-width: 100%;
 }
 
 /* Modal de Victoria */
